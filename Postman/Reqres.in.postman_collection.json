@@ -1,0 +1,382 @@
+{
+	"info": {
+		"_postman_id": "11dde0e4-c20a-473f-88e9-1bc3d78598b3",
+		"name": "Reqres.in",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46496738"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "List available users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status is 200\", () => pm.response.to.have.status(200));\r",
+									"\r",
+									"const json = pm.response.json();\r",
+									"const schema = {\r",
+									"  \"page\": 0,\r",
+									"  \"per_page\": 0,\r",
+									"  \"total\": 0,\r",
+									"  \"total_pages\": 0,\r",
+									"  \"data\": [\r",
+									"    {\r",
+									"      \"id\": 0,\r",
+									"      \"email\": \"string\",\r",
+									"      \"first_name\": \"string\",\r",
+									"      \"last_name\": \"string\",\r",
+									"      \"avatar\": \"string\"\r",
+									"    }\r",
+									"  ]\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Schema matches\", function () {\r",
+									"  pm.response.to.have.jsonSchema(schema);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Has at least 1 user\", () => pm.expect(json.data.length).to.be.above(0));\r",
+									"\r",
+									"const first = json.data[0];\r",
+									"pm.collectionVariables.set(\"user_id\", String(first.id));\r",
+									"pm.collectionVariables.set(\"user_email\", first.email);\r",
+									"\r",
+									"const ids = json.data.map(u => u.id);\r",
+									"pm.test(\"IDs are non-decreasing\", () => {\r",
+									"  for (let i = 1; i < ids.length; i++) {\r",
+									"    pm.expect(ids[i]).to.be.at.least(ids[i-1]);\r",
+									"  }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Local A to Z sort by first_name (case-insensitive)\", () => {\r",
+									"  const names = json.data.map(u => (u.first_name ?? \"\").trim());\r",
+									"  const sorted = [...names].sort((a,b) => a.localeCompare(b, 'en', { sensitivity: 'base' }));\r",
+									"  pm.expect(sorted).to.eql([...sorted].sort((a,b)=>a.localeCompare(b,'en',{sensitivity:'base'})));\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{apiBase}}/users?page={{page}}",
+							"host": [
+								"{{apiBase}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "{{page}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get extracted user details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status is 200\", () => pm.response.to.have.status(200));\r",
+									"\r",
+									"const json = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Email matches one from list\", function () {\r",
+									"  pm.expect(json.data.email).to.eql(pm.collectionVariables.get(\"user_email\"));\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{apiBase}}/users/{{user_id}}",
+							"host": [
+								"{{apiBase}}"
+							],
+							"path": [
+								"users",
+								"{{user_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Non existing user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"404 Not Found\", () => pm.response.to.have.status(404));\r",
+									"\r",
+									"const responseText = pm.response.text().trim();\r",
+									"\r",
+									"pm.test(\"Empty body or {}\", () => {\r",
+									"  pm.expect(responseText === \"\" || responseText === \"{}\").to.be.true;\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiBase}}/users/{{user_id_invalid}}",
+							"host": [
+								"{{apiBase}}"
+							],
+							"path": [
+								"users",
+								"{{user_id_invalid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new user /user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const mathRand = Math.random().toString(36).slice(2, 8);\r",
+									"const timestamp = Date.now().toString().slice(-6);\r",
+									"\r",
+									"pm.collectionVariables.set(\"new_user_name\", `petya_${mathRand}_${timestamp}`);\r",
+									"pm.collectionVariables.set(\"new_user_email\", `petya_qa@${mathRand}`);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"201 Created\", () => pm.response.to.have.status(201));\r",
+									"const body = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Has id & createdAt\", () => {\r",
+									"  pm.expect(body.id).to.be.a(\"string\");\r",
+									"  pm.expect(body.createdAt).to.be.a(\"string\");\r",
+									"});\r",
+									"pm.test(\"Echoes sent fields\", () => {\r",
+									"  pm.expect(body.name).to.eql(pm.collectionVariables.get(\"new_user_name\"));\r",
+									"  pm.expect(body.email).to.eql(pm.collectionVariables.get(\"new_user_email\"));\r",
+									"});\r",
+									"\r",
+									"pm.collectionVariables.set(\"new_user_id\", String(body.id));\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"name\": \"{{new_user_name}}\", \r\n    \"email\": \"{{new_user_email}}\" \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiBase}}/users",
+							"host": [
+								"{{apiBase}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete the new user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"204 No Content\", () => pm.response.to.have.status(204));\r",
+									"pm.test(\"Empty body\", () => pm.expect(pm.response.text()).to.eql(\"\"));\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{apiBase}}/users/{{new_user_id}}",
+							"host": [
+								"{{apiBase}}"
+							],
+							"path": [
+								"users",
+								"{{new_user_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "apikey",
+				"apikey": [
+					{
+						"key": "key",
+						"value": "x-api-key",
+						"type": "string"
+					},
+					{
+						"key": "value",
+						"value": "reqres-free-v1",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					"pm.collectionVariables.set(\"timestamp\", Date.now().toString());\r",
+					"\r",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "user_id",
+			"value": ""
+		},
+		{
+			"key": "user_email",
+			"value": ""
+		},
+		{
+			"key": "user_id_invalid",
+			"value": "6699"
+		},
+		{
+			"key": "new_user_name",
+			"value": ""
+		},
+		{
+			"key": "new_user_id",
+			"value": ""
+		},
+		{
+			"key": "timestamp",
+			"value": ""
+		},
+		{
+			"key": "new_user_email",
+			"value": ""
+		}
+	]
+}

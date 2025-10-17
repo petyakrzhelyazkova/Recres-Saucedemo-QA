@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Reqres.in" tests="5" time="0.688">
+  <testsuite name="Users / List available users" id="c10a4036-3e73-499b-8f82-875e723b5495" timestamp="2025-10-17T07:36:58.311Z" tests="5" failures="0" errors="0" time="0.206">
+    <testcase name="Status is 200" time="0.206" classname="UsersListAvailableUsers"/>
+    <testcase name="Schema matches" time="0.206" classname="UsersListAvailableUsers"/>
+    <testcase name="Has at least 1 user" time="0.206" classname="UsersListAvailableUsers"/>
+    <testcase name="IDs are non-decreasing" time="0.206" classname="UsersListAvailableUsers"/>
+    <testcase name="Local A to Z sort by first_name (case-insensitive)" time="0.206" classname="UsersListAvailableUsers"/>
+  </testsuite>
+  <testsuite name="Users / Get extracted user details" id="03a26fd0-0086-4d6f-8252-9b57f1dbbf19" timestamp="2025-10-17T07:36:58.311Z" tests="2" failures="0" errors="0" time="0.066">
+    <testcase name="Status is 200" time="0.066" classname="UsersGetExtractedUserDetails"/>
+    <testcase name="Email matches one from list" time="0.066" classname="UsersGetExtractedUserDetails"/>
+  </testsuite>
+  <testsuite name="Users / Non existing user" id="6aed129f-d7f5-496c-af18-ada7af0c10b8" timestamp="2025-10-17T07:36:58.311Z" tests="2" failures="0" errors="0" time="0.186">
+    <testcase name="404 Not Found" time="0.186" classname="UsersNonExistingUser"/>
+    <testcase name="Empty body or {}" time="0.186" classname="UsersNonExistingUser"/>
+  </testsuite>
+  <testsuite name="Users / Create a new user /user" id="38d6a873-7904-40cf-8162-b39175e0ffb1" timestamp="2025-10-17T07:36:58.311Z" tests="3" failures="0" errors="0" time="0.150">
+    <testcase name="201 Created" time="0.150" classname="UsersCreateANewUserUser"/>
+    <testcase name="Has id &amp; createdAt" time="0.150" classname="UsersCreateANewUserUser"/>
+    <testcase name="Echoes sent fields" time="0.150" classname="UsersCreateANewUserUser"/>
+  </testsuite>
+  <testsuite name="Users / Delete the new user" id="0c1d4dd8-8e7f-415b-813b-56d919d60988" timestamp="2025-10-17T07:36:58.311Z" tests="2" failures="0" errors="0" time="0.080">
+    <testcase name="204 No Content" time="0.080" classname="UsersDeleteTheNewUser"/>
+    <testcase name="Empty body" time="0.080" classname="UsersDeleteTheNewUser"/>
+  </testsuite>
+</testsuites>
