@@ -15,7 +15,7 @@ public class Scenario2Test extends BaseTest {
     public void sort_high_to_low() {
 
         products = login.login(user(), pass());
-        products.selectSort(SortOption.PRICE_LOW_TO_HIGH);
+        products.selectSort(SortOption.PRICE_HIGH_TO_LOW);
         Assert.assertTrue(products.isSortedHighToLow(), "Products are sorted high to low");
         products.logout();
     }
