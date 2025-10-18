@@ -1,0 +1,8 @@
+<suite name="SauceDemo Suite" verbose="1" parallel="false">
+    <test name="SauceDemo Tests">
+        <classes>
+            <class name="com.saucedemo.tests.Scenario1Test"/>
+            <class name="com.saucedemo.tests.Scenario2Test"/>
+        </classes>
+    </test>
+</suite>
