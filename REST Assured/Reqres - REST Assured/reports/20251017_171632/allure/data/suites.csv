@@ -1,0 +1,6 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","102","GET /users/{id} -> 200 and email matches","","2025-10-17","passed","2025-10-17","","reqrestests.UsersApiTest","reqrestests.UsersApiTest","getUser_ok_emailMatches"
+"","72","GET /users/{id} -> 404 and empty body","","2025-10-17","passed","2025-10-17","","reqrestests.UsersApiTest","reqrestests.UsersApiTest","getUser_404_emptyBody"
+"","252","POST /users -> 201 + echo fields + id + createdAt","","2025-10-17","passed","2025-10-17","","reqrestests.UsersApiTest","reqrestests.UsersApiTest","createUser_201_echoFields"
+"","3060","GET /users?page=n -> 200 and extract user id/email","","2025-10-17","passed","2025-10-17","","reqrestests.UsersApiTest","reqrestests.UsersApiTest","listUsers_ok_extractFields"
+"","183","DELETE /users/{id} -> 204 empty body","","2025-10-17","passed","2025-10-17","","reqrestests.UsersApiTest","reqrestests.UsersApiTest","deleteUser_204_empty"

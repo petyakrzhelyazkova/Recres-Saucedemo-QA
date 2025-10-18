@@ -1,0 +1,6 @@
+"BROKEN","EPIC","FAILED","FEATURE","PASSED","SKIPPED","STORY","UNKNOWN"
+"0","Reqres","0","Users","1","0","Get user by id","0"
+"0","Reqres","0","Users","1","0","Get user by id (404)","0"
+"0","Reqres","0","Users","1","0","Create user","0"
+"0","Reqres","0","Users","1","0","List users","0"
+"0","Reqres","0","Users","1","0","Delete user","0"
