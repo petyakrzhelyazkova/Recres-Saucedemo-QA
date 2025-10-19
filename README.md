@@ -178,10 +178,11 @@ Recres-SauceDemo-QA/
 │   ├── allure-results/
 │   ├── src/
 │   ├── windows-selenium-run-and-report.bat
-│   ├── .gitignore
 │   ├── pom.xml
 │   └── testing.xml
 │
+├── .gitignore
+|
 └── README.md
 ```
 
