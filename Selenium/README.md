@@ -8,7 +8,6 @@ This folder contains **automated UI tests** for [Saucedemo](https://www.saucedem
 - `testing.xml` - TestNG suite file  
 - `windows-selenium-run-and-report.bat` - Script for automatic run and Allure report generation  
 - `/allure-results` - Folder for Allure outputs  
-- `/target` - Maven build output  
 - `/.allure` - Local Allure binary for reporting
 
 ## How to Run
