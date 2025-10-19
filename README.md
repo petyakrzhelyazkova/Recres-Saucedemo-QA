@@ -1,4 +1,4 @@
-# Recres | SauseDemo | QA  
+# Recres | SauceDemo | QA  
 Automated API and UI Test Suites for Recres.in and Saucedemo
 
 ---
