@@ -161,8 +161,6 @@ Even with all tools installed, the following files/folders are required:
 ```
 Recres-SauseDemo-QA/
 │
-├── .idea/
-│
 ├── Postman/
 │   ├── reports/
 │   ├── Reqres.in.postman_collection.json
@@ -170,7 +168,6 @@ Recres-SauseDemo-QA/
 │   └── windows-postman-run-and-report.bat
 │
 ├── REST Assured/
-│   ├── .idea/
 │   ├── reports/
 │   ├── src/
 │   ├── pom.xml
@@ -178,7 +175,6 @@ Recres-SauseDemo-QA/
 │
 ├── Selenium/                    
 │   ├── .allure/
-│   ├── .idea/
 │   ├── allure-results/
 │   ├── src/
 │   ├── windows-selenium-run-and-report.bat
