@@ -1,4 +1,3 @@
-
 package saucedemo.components;
 
 import io.qameta.allure.Step;
