@@ -95,13 +95,9 @@ Each folder contains the full implementation, configuration, and run instruction
 |----------------|----------|------|
 | **Java (JDK 17+)** | Required for Java test execution | https://adoptium.net/ |
 | **Maven** | Build & dependency management | https://maven.apache.org/ |
-| **TestNG** | Test execution framework | https://testng.org/ |
 | **Allure** | Reporting framework for REST & UI suites | https://allurereport.org/ |
 | **Postman / Newman** | API test creation and CLI execution | https://www.postman.com/downloads/ |
-| **Selenium WebDriver** | UI automation framework | https://www.selenium.dev/ |
-| **WebDriverManager** | Driver binaries manager | https://github.com/bonigarcia/webdrivermanager |
 | **Chrome / Firefox** | Supported browsers | [Chrome](https://www.google.com/chrome/) / [Firefox](https://www.mozilla.org/firefox/) |
-| **Git** | Version control | https://git-scm.com/downloads |
 
 ---
 
