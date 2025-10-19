@@ -89,15 +89,7 @@ Each folder contains the full implementation, configuration, and run instruction
 
 ---
 
-## 4. Prerequisites (Required Files)
-Even with all tools installed, the following files/folders are required:
-- `/Postman` - Postman collection + environment JSON + automated run script  
-- `/REST Assured` - Java project with POM, config, test classes, and automated run script  
-- `/Selenium` - Java project with Selenium POM structure, configuration, and batch file for automated run and report generation  
-
----
-
-## 5. Environment Requirements
+## 4. Environment Requirements
 
 | Tool / Library | Purpose | Link |
 |----------------|----------|------|
@@ -113,9 +105,9 @@ Even with all tools installed, the following files/folders are required:
 
 ---
 
-## 6. Environment Setup
+## 5. Environment Setup
 
-### 6.1 API (Postman / REST Assured)
+### 5.1 API (Postman / REST Assured)
 - Import the **Postman collection** and **environment**.  
 - Or run via CLI:
   ```bash
@@ -140,7 +132,7 @@ Even with all tools installed, the following files/folders are required:
   allure serve target/allure-results
   ```
 
-### 6.2 UI (Selenium)
+### 5.2 UI (Selenium)
 1. Open the `Selenium` folder in IntelliJ IDEA.  
 2. Run via Maven:
    ```bash
@@ -157,7 +149,7 @@ Even with all tools installed, the following files/folders are required:
 
 ---
 
-## 7. Repository Structure
+## 6. Repository Structure
 ```
 Recres-SauceDemo-QA/
 │
@@ -188,7 +180,7 @@ Recres-SauceDemo-QA/
 
 ---
 
-## 8. Bonus Task: Multi‑Resolution Support
+## 7. Bonus Task: Multi‑Resolution Support
 The Selenium framework supports **different browser resolutions** to simulate desktop, tablet and mobile.  
 Supply a `resolution` property to the Driver Factory in one of the following ways.
 
