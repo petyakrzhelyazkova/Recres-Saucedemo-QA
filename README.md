@@ -158,12 +158,14 @@ Recres-SauceDemo-QA/
 │   ├── Reqres.in.postman_collection.json
 │   ├── Reqres.in.postman_environment.json
 │   └── windows-postman-run-and-report.bat
+│   └── README.md
 │
 ├── REST Assured/
 │   ├── reports/
 │   ├── src/
 │   ├── pom.xml
 │   └── windows-rest-run-and-report.bat
+│   └── README.md
 │
 ├── Selenium/                    
 │   ├── .allure/
@@ -172,6 +174,7 @@ Recres-SauceDemo-QA/
 │   ├── windows-selenium-run-and-report.bat
 │   ├── pom.xml
 │   └── testing.xml
+│   └── README.md
 │
 ├── .gitignore
 |
