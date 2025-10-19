@@ -35,7 +35,7 @@ Each folder contains the full implementation, configuration, and run instruction
 | Folder | Description |
 |--------|--------------|
 | **Postman** | Manual and automated API tests for Recres.in. Contains the collection, environment files, and a Windows batch script for automatic execution and **Allure** report generation. |
-| **REST Assured** | Java implementation of the same API scenarios as Postman, built with **Maven**, **TestNG**, and **Allure** reporting. Includes both manual CLI and Windows batch scripts for automated runs and report display. |
+| **REST Assured** | Java implementation of the same API scenarios as Postman, built with **Maven**, **JUnit**, and **Allure** reporting. Includes both manual CLI and Windows batch scripts for automated runs and report display. |
 | **Selenium** | End‑to‑end UI automation for Saucedemo using **Selenium WebDriver**, **TestNG**, and **Allure**. Includes configuration for multiple browsers and resolutions, plus a ready‑to‑run Windows batch script for automatic execution and reporting. |
 
 ---
