@@ -1,4 +1,3 @@
-// src/test/java/com/saucedemo/tests/BaseTest.java
 package com.saucedemo.tests;
 
 import io.qameta.allure.testng.AllureTestNg;
