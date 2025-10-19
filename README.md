@@ -17,7 +17,7 @@ Automated API and UI Test Suites for Recres.in and Saucedemo
 ---
 
 ## 2. Overview
-**Recres-SauseDemo-QA** combines both **API** and **Web UI** automation tasks, created as part of а QA Automation Challenge.
+**Recres-SauceDemo-QA** combines both **API** and **Web UI** automation tasks, created as part of а QA Automation Challenge.
 
 The repository contains:
 - **REST API tests** for [Recres.in](https://reqres.in/) implemented using **Postman** and **REST Assured (Java)**.  
@@ -159,7 +159,7 @@ Even with all tools installed, the following files/folders are required:
 
 ## 7. Repository Structure
 ```
-Recres-SauseDemo-QA/
+Recres-SauceDemo-QA/
 │
 ├── Postman/
 │   ├── reports/
