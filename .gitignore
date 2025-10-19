@@ -1,0 +1,56 @@
+# Maven / Java
+target/
+!.mvn/wrapper/maven-wrapper.jar
+*.class
+*.log
+*.jar
+*.war
+*.ear
+
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+*.ipr
+*.iws
+
+# Eclipse
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+# NetBeans 
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# Allure
+allure-results/
+allure-report/
+allure-history/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Config / credentials
+config.properties
+*.env
+config.example.properties
+
+# VS Code 
+.vscode/
+
+# Mac OS
+.DS_Store
+
+
