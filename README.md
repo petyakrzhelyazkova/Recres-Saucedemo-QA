@@ -136,7 +136,7 @@ Each folder contains the full implementation, configuration, and run instruction
    ```
 3. Or run the automated script (Windows):
    ```bash
-   run-and-report.bat
+   windows-selenium-run-and-report.bat
    ```
 4. To view the Allure report:
    ```bash
