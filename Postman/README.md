@@ -5,7 +5,7 @@ This folder contains **API tests** for [Reqres.in](https://reqres.in/) built in 
 ## Content
 - `Reqres.in.postman_collection.json` - API test collection  
 - `Reqres.in.postman_environment.json` - Environment variables  
-- `windows-postman-run-and-report.bat` - Script for automatic run and Allure report generation  
+- `windows-postman-run-and-report.bat` - Script for automatic run and HTML report generation  
 - `/reports` - Folder for exported or generated reports
 
 ## How to Run
