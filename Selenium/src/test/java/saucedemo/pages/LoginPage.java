@@ -14,7 +14,6 @@ public class LoginPage extends BasePage {
     private final By user = By.id("user-name");
     private final By pass = By.id("password");
     private final By loginBtn = By.id("login-button");
-    private final By error = By.cssSelector("[data-test='error']");
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -28,9 +27,5 @@ public class LoginPage extends BasePage {
         this.wait.until(ExpectedConditions.urlContains("/inventory.html"));
         this.wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".title")));
         return new saucedemo.pages.ProductsPage(driver);
-    }
-
-    public String getError() {
-        return el(error).getText();
     }
 }
