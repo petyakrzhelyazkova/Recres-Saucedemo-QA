@@ -28,4 +28,5 @@ public class LoginPage extends BasePage {
         this.wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".title")));
         return new saucedemo.pages.ProductsPage(driver);
     }
+
 }
