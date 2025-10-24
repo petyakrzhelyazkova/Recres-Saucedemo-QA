@@ -7,17 +7,20 @@ import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.config.ObjectMapperConfig;
 import io.restassured.config.RestAssuredConfig;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
-public class ReqresBaseApiTest {
+public abstract class ReqresBaseApiTest {
+
     protected UsersService users;
 
-    @BeforeEach
-    void setUp() {
-        users = new UsersService();
-    }
-    static void attachAllure() {
-        RestAssured.filters(new AllureRestAssured());
+    @BeforeAll
+    static void attachAllureAndConfigureJackson() {
+        RestAssured.filters(
+                new AllureRestAssured()
+                        .setRequestAttachmentName("API Request")
+                        .setResponseAttachmentName("API Response")
+        );
 
         RestAssured.config = RestAssuredConfig.config().objectMapperConfig(
                 ObjectMapperConfig.objectMapperConfig().jackson2ObjectMapperFactory((cls, charset) -> {
@@ -26,5 +29,10 @@ public class ReqresBaseApiTest {
                     return om;
                 })
         );
+    }
+
+    @BeforeEach
+    void setUp() {
+        users = new UsersService();
     }
 }
