@@ -14,7 +14,6 @@ public class LoginPage extends BasePage {
     private final By user = By.id("user-name");
     private final By pass = By.id("password");
     private final By loginBtn = By.id("login-button");
-    private final By error = By.cssSelector("[data-test='error']");
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -30,7 +29,4 @@ public class LoginPage extends BasePage {
         return new saucedemo.pages.ProductsPage(driver);
     }
 
-    public String getError() {
-        return el(error).getText();
-    }
 }
